@@ -2,11 +2,12 @@
 	"files": {
 		"README.md": "f2da94b53c9a63a74a9cd3d148de0c6d9e74b1963a488931751973e1c148a6a9",
 		"README.url": "1dbecd83936b46eeaa659e612cb58b70a80bd9af1e718b2723bfd5771ed135a8",
-		"index.js": "e18559c0d63da482f1478a4e3ddd9f8da29309a24a96d22b01c88d3f828a3ddb",
+		"index.js": "17176607df9ac24b3e9c3d494659f40b3460e8870323f7f7d0911987a535be95",
 		"module.json": "501c066a2763f4065b189bf9343ca3ec61ed2b662c45874be56a5b3a5f085428"
 	},
 	"defs": {
+		"C_REQUEST_CONTRACT": 1,
 		"S_LOAD_EP_INFO": 1,
-		"S_SHOW_USER_EP_INFO": "raw"
+		"S_PLAYER_CHANGE_EP": "raw"
 	}
 }
