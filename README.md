@@ -1,2 +1,6 @@
-# talents-daily-exp-tracker
-I have no idea if this works or even does anything. It should tell you "talent exp earned" / "talent exp daily cap" whenever you open talents UI.
+# Talents Info
+
+Shows talents info on **!EP** proxy command or when you open talents game window
+Also shows **EXP +N** messages when you receive talents experience points along with DailyCap limit if it wasn't reached yet and warns you when it gets reached
+
+<img src=http://u.cubeupload.com/Owyn/TI.png>

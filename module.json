@@ -1,5 +1,6 @@
 {
 	"disableAutoUpdate": false,
-	"servers": ["https://raw.githubusercontent.com/Mister-Kay/talents-daily-exp-tracker/master/"],
-	"supportUrl": "https://github.com/Mister-Kay/talents-daily-exp-tracker/issues"
+	"options": { "niceName": " " },
+	"servers": ["https://raw.githubusercontent.com/Owyn/talents_info/master/"],
+	"supportUrl": "https://github.com/Owyn/talents_info/issues"
 }
