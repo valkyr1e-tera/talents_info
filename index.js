@@ -30,7 +30,6 @@ module.exports = function talentsinfo(mod) {
 		dcap = data.readInt32LE(24);
 		if(gained)
 		{
-			command.message('<font color="#FDD017">Talents:</font> <font color="#00FFFF">+' + gained + ' EXP</font>' + (!warned ? ' (' + dexp + ' / ' + dcap + ' (DailyCap), <font color="#FFF380">' + (dcap-dexp) + '</font> left for today)' : '' ));
 			if(dexp >= dcap)
 			{
 				if(!warned)
@@ -43,6 +42,7 @@ module.exports = function talentsinfo(mod) {
 			{
 				warned = false;
 			}
+			command.message('<font color="#FDD017">Talents:</font> <font color="#00FFFF">+' + gained + ' EXP</font>' + (!warned ? ' (' + dexp + ' / ' + dcap + ' (DailyCap), <font color="#FFF380">' + (dcap-dexp) + '</font> left for today)' : '' ));
 		}
 	});
 	
