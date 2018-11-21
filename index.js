@@ -14,7 +14,7 @@ module.exports = function talentsinfo(mod) {
     // send message exp/cap (exp%)
     function msg()
 	{
-        command.message(`<font color="#FDD017">Talents info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>, soft DailyEXP <font color="#00FFFF">${dexp}/${sdcap} (${Math.round(100*dexp/sdcap)}%) </font>`);
+        command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>, DailyEXP <font color="#00FFFF">${dexp}/${sdcap} (${Math.round(100*dexp/sdcap)}%) </font>`);
 	}
 	
 	mod.hook('S_LOAD_EP_INFO', 1, event=>{
@@ -22,6 +22,11 @@ module.exports = function talentsinfo(mod) {
 		lvl = event.level;
 		dexp = event.dailyExp;
 		dcap = event.dailyExpMax;
+		sdcap = Math.floor(dcap*softcap);
+	});
+	
+	mod.hook('S_CHANGE_EP_EXP_DAILY_LIMIT', 1, event=>{
+		dcap = event.limit;
 		sdcap = Math.floor(dcap*softcap);
 	});
 	
@@ -39,7 +44,7 @@ module.exports = function talentsinfo(mod) {
 			{
 				if(!warned)
 				{
-					command.message('<font color="#FDD017">Talents EXP</font> Daily SoftCap <font color="#FF0000">reached!</font>');
+					command.message('<font color="#FDD017">EXP</font> Daily Cap <font color="#FF0000">reached!</font>');
 					warned = true;
 				}
 			}
@@ -47,7 +52,7 @@ module.exports = function talentsinfo(mod) {
 			{
 				warned = false;
 			}
-			command.message('<font color="#FDD017">Talents:</font> <font color="#00FFFF">+' + gained + ' EXP</font>' + (!warned ? ' (' + dexp + ' / ' + sdcap + ' (Daily SoftCap), <font color="#FFF380">' + (sdcap-dexp) + '</font> left for today uncapped)' : ' (' + scmod + '% mod)' ));
+			command.message('<font color="#00FFFF">+' + gained + ' EXP</font>' + (!warned ? ' (' + dexp + ' / ' + sdcap + ' (Daily Cap), <font color="#FFF380">' + (sdcap-dexp) + '</font> EXP left for today uncapped)' : ' (' + scmod + '% mod)' ));
 		}
 	});
 	

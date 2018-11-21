@@ -1,11 +1,12 @@
 {
 	"files": {
-		"README.md": "225353301b2603447c1c02d859e79b8dde56a48e8d58e2f4200756affca3a28d",
-		"index.js": "9546a372fbf1006daeea3bba50c66de03abbc9e785201452e0270333a55fa893",
-		"module.json": "05522d8b22a807b3287a489d62e8392d0127bd84afcbff0488fa72c917d7193a"
+		"README.md": "3351b4f423469c703e259a1dbaaf060b770972e85c4c56187ece595a285c5dce",
+		"index.js": "b8317b9b348c34200f5f03805d7f698ef2adb40c56b5e073c629247af6c41cb0",
+		"module.json": "a74cd7cb7bb4f57ba267726fdb9c51f097aaf97ce0b2b217cbc1a92e89b5350c"
 	},
 	"defs": {
 		"C_REQUEST_CONTRACT": 1,
+		"S_CHANGE_EP_EXP_DAILY_LIMIT": 1,
 		"S_LOAD_EP_INFO": 1,
 		"S_PLAYER_CHANGE_EP": "raw"
 	}
