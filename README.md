@@ -3,7 +3,7 @@
 Shows talents info **when you open talents game window** or on **!EP** proxy command
 Also shows **EXP +N** messages when you receive talents experience points along with DailyCap limit if it wasn't reached yet and warns you when it gets reached
 
-<img src=http://u.cubeupload.com/Owyn/talentsinfo.png>
+<img src=http://u.cubeupload.com/Owyn/talentinfo.png>
 
 # FAQ:
 
