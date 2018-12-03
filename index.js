@@ -14,10 +14,10 @@ module.exports = function talentsinfo(mod) {
     // send message exp/cap (exp%)
     function msg()
 	{
-        command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>, DailyEXP <font color="#00FFFF">${dexp}/${sdcap} (${Math.round(100*dexp/sdcap)}%) </font>`);
+        command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>, DailyEXP <font color="#00FFFF">${dexp}/${sdcap} (${Math.round(100*dexp/sdcap)}%)</font>`);
 	}
 	
-	mod.hook('S_LOAD_EP_INFO', 1, event=>{
+	mod.hook('S_LOAD_EP_INFO', 1, event => {
 		exp = event.exp;
 		lvl = event.level;
 		dexp = event.dailyExp;
@@ -25,20 +25,19 @@ module.exports = function talentsinfo(mod) {
 		sdcap = Math.floor(dcap*softcap);
 	});
 	
-	mod.hook('S_CHANGE_EP_EXP_DAILY_LIMIT', 1, event=>{
+	mod.hook('S_CHANGE_EP_EXP_DAILY_LIMIT', 1, event => {
 		dcap = event.limit;
 		sdcap = Math.floor(dcap*softcap);
 	});
 	
-	mod.hook('S_PLAYER_CHANGE_EP', 'raw', (code, data)=>{
-		let gained = data.readInt32LE(4);
-		exp = data.readInt32LE(8); // 64 actually but this should be enough
-		lvl = data.readInt32LE(16);
-		dexp = data.readInt32LE(20);
-		dcap = data.readInt32LE(24);
+	mod.hook('S_PLAYER_CHANGE_EP', 1, event => {
+		const gained = event.expDifference;
+		exp = event.exp;
+		lvl = event.level;
+		dexp = event.dailyExp;
+		dcap = event.dailyExpMax;
 		sdcap = Math.floor(dcap*softcap);
-		let scmod = Math.round(data.readFloatLE(37) * 100);
-		if(gained)
+		if (gained)
 		{
 			if(dexp >= sdcap)
 			{
@@ -52,15 +51,24 @@ module.exports = function talentsinfo(mod) {
 			{
 				warned = false;
 			}
-			command.message('<font color="#00FFFF">+' + gained + ' EXP</font>' + (!warned ? ' (' + dexp + ' / ' + sdcap + ' (Daily Cap), <font color="#FFF380">' + (sdcap-dexp) + '</font> EXP left for today uncapped)' : ' (' + scmod + '% mod)' ));
+			let message = `<font color="#00FFFF">+${gained} EXP</font>`;
+			if (warned)
+			{
+				message += `(${Math.round(event.tsRev * 100)}% mod)`;
+			}
+			else
+			{
+				message += `(${dexp}/${sdcap}) (Daily Cap), <font color="#FFF380">${sdcap - dexp}</font> EXP left for today uncapped)`;
+			}
+			command.message(message);
 		}
 	});
 	
 	// open EP ui
     mod.hook('C_REQUEST_CONTRACT', 1, event => {
-        if (event.type == 77)
+		if (event.type == 77)
 		{
             msg();
-        }
+		}
 	});
 };
