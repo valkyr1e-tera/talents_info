@@ -1,7 +1,7 @@
 {
 	"files": {
-		"index.js": "9196f2445df8271d3b85ca394b860facb37ba2e62d7de23c468a133bfea2fa84",
-		"module.json": "a74cd7cb7bb4f57ba267726fdb9c51f097aaf97ce0b2b217cbc1a92e89b5350c"
+		"index.js": "e1244aa333c5c6b1bed31e44da16b3f56975f354c9649b17c8fbf687471b641f",
+		"module.json": "d3d6f3ce9b16c81bcbc89bc316affa624575df77710b09549a1fb955aca21111"
 	},
 	"defs": {
 		"C_REQUEST_CONTRACT": 1,
