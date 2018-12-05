@@ -9,7 +9,7 @@ module.exports = function talentsinfo(mod) {
   mod.command.add(['talent', 'talents', 'ep'], msg)
 
   function msg() {
-    mod.command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>(remaining EXP for next LVL:<font color="#00FFFF">${expTable[lvl+1]-Number(exp)}</font>), DailyEXP <font color="#00FFFF">${dexp}/${sdcap()} (${Math.round(100*dexp/sdcap())}%)</font>`)
+    mod.command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>(NEXT: <font color="#00FFFF">${expTable[lvl+1]-Number(exp)}</font> EXP), DailyEXP <font color="#00FFFF">${dexp}/${sdcap()} (${Math.round(100*dexp/sdcap())}%)</font>`)
   }
 
   function sdcap() {
