@@ -1,19 +1,17 @@
 module.exports = function talentsinfo(mod) {
+  const expTable = require('./exp').table
   let warned = false
   let lvl = 0,
       exp = 0,
       dexp = 0,
       dcap = 0
 
-  // message on command
   mod.command.add(['talent', 'talents', 'ep'], msg)
 
-  // send message exp/cap (exp%)
   function msg() {
-    mod.command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>, DailyEXP <font color="#00FFFF">${dexp}/${sdcap()} (${Math.round(100*dexp/sdcap())}%)</font>`)
+    mod.command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>(remaining EXP for next LVL:<font color="#00FFFF">${expTable[lvl+1]-exp}</font>), DailyEXP <font color="#00FFFF">${dexp}/${sdcap()} (${Math.round(100*dexp/sdcap())}%)</font>`)
   }
 
-  // calc sdcap
   function sdcap() {
     const softcap = 0.8901403358192
     return Math.floor(dcap * softcap)
