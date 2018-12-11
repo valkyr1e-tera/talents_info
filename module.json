@@ -1,5 +1,11 @@
 {
 	"disableAutoUpdate": false,
-	"options": { "niceName": "<font color='#FDD017'>Talents</font>" },
+	"name": "talents-info",
+	"author": "valkyr1e / Owyn / Mister-Kay",
+	"description": "Shows talents info",
+	"version": "1.0",
+	"options": {
+		"niceName": "<font color='#FDD017'>Talents</font>"
+	},
 	"servers": ["https://raw.githubusercontent.com/valkyr1e-tera/talents_info/master/"]
 }
