@@ -2,7 +2,7 @@
 	"files": {
 		"exp.json": "30aa7bf47643d02caade3bad7dbbb370510ca64ab4c6d4f149e4addd186034b1",
 		"index.js": "473a928155a12d2eafbbd482d989579e75b45b960444be13189d2ecde78ac0e2",
-		"module.json": "3fd57e77ce947191eb174216effb551dafc440142c177635386dc662a6eb0b4e"
+		"module.json": "2c0694c3e064653b5644c977fad9a3b5407cdb07e5fd162b3279c3e6231cf2c6"
 	},
 	"defs": {
 		"C_REQUEST_CONTRACT": 1,

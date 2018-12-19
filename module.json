@@ -5,7 +5,8 @@
 	"description": "Shows talents info",
 	"version": "1.0",
 	"options": {
-		"niceName": "<font color='#FDD017'>Talents</font>"
+		"niceName": "<font color='#FDD017'>Talents</font>",
+		"guiName": "Talents Info"
 	},
 	"servers": ["https://raw.githubusercontent.com/valkyr1e-tera/talents_info/master/"]
 }
