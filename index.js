@@ -1,6 +1,6 @@
 module.exports = function talentsinfo(mod) {
   const expTable = require('./exp').table
-  let exp = level = dailyExp = dailyExpMax = 0
+  let exp, level, dailyExp, dailyExpMax
   let warned = false
 
   mod.command.add('ep', msg)
