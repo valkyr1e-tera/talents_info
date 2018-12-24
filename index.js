@@ -1,41 +1,34 @@
 module.exports = function talentsinfo(mod) {
   const expTable = require('./exp').table
+  let exp = level = dailyExp = dailyExpMax = 0
   let warned = false
-  let lvl = 0,
-      exp = 0,
-      dexp = 0,
-      dcap = 0
 
-  mod.command.add(['talent', 'talents', 'ep'], msg)
+  mod.command.add('ep', msg)
 
   function msg() {
-    mod.command.message(`LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>(NEXT: <font color="#00FFFF">${expTable[lvl+1] - Number(exp)}</font> EXP), DailyEXP <font color="#00FFFF">${dexp}/${sdcap()} (${Math.round(dexp / sdcap() * 100)}%)</font>`)
+    mod.command.message(`LVL <font color="#00FFFF">${level}</font>, EXP: <font color="#00FFFF">${exp}</font>(NEXT: <font color="#00FFFF">${expTable[level+1] - Number(exp)}</font> EXP), DailyEXP <font color="#00FFFF">${dailyExp}/${sdcap()} (${Math.round(dailyExp / sdcap() * 100)}%)</font>`)
+  }
+
+  function updateEP(event) {
+    ({ exp, level, dailyExp, dailyExpMax } = event)
   }
 
   function sdcap() {
-    return Math.floor(dcap * 0.8901403358192)
+    return Math.floor(dailyExpMax * 0.8901403358192)
   }
 
-  mod.hook('S_LOAD_EP_INFO', 1, event => {
-    exp = event.exp
-    lvl = event.level
-    dexp = event.dailyExp
-    dcap = event.dailyExpMax
-  })
+  mod.hook('S_LOAD_EP_INFO', 1, updateEP)
 
   mod.hook('S_CHANGE_EP_EXP_DAILY_LIMIT', 1, event => {
-    dcap = event.limit
+    dailyExpMax = event.limit
   })
 
   mod.hook('S_PLAYER_CHANGE_EP', 1, event => {
+    updateEP(event)
     const gained = event.expDifference
-    exp = event.exp
-    lvl = event.level
-    dexp = event.dailyExp
-    dcap = event.dailyExpMax
 
     if (gained) {
-      if (dexp >= sdcap()) {
+      if (dailyExp >= sdcap()) {
         if (!warned) {
           mod.command.message('<font color="#FDD017">EXP</font> Daily Cap <font color="#FF0000">reached!</font>')
           warned = true
@@ -48,13 +41,13 @@ module.exports = function talentsinfo(mod) {
       if (warned)
         message += `(${Math.round(event.tsRev * 100)}% mod)`
       else
-        message += `(${dexp}/${sdcap()}) (Daily Cap), <font color="#FFF380">${sdcap() - dexp}</font> EXP left for today uncapped)`
+        message += `(${dailyExp}/${sdcap()}(Daily Cap)), <font color="#FFF380">${sdcap() - dailyExp}</font> EXP left for Daily Cap)`
       mod.command.message(message)
     }
   })
 
-  // open EP ui
   mod.hook('C_REQUEST_CONTRACT', 1, event => {
+    // open EP ui
     if (event.type === 77)
       msg()
   })
