@@ -9,12 +9,11 @@ module.exports = function talentsinfo(mod) {
   mod.command.add(['talent', 'talents', 'ep'], msg)
 
   function msg() {
-    mod.command.message(`<font color="#FDD017">info:</font> LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>(NEXT: <font color="#00FFFF">${expTable[lvl+1]-Number(exp)}</font> EXP), DailyEXP <font color="#00FFFF">${dexp}/${sdcap()} (${Math.round(100*dexp/sdcap())}%)</font>`)
+    mod.command.message(`LVL <font color="#00FFFF">${lvl}</font>, EXP: <font color="#00FFFF">${exp}</font>(NEXT: <font color="#00FFFF">${expTable[lvl+1] - Number(exp)}</font> EXP), DailyEXP <font color="#00FFFF">${dexp}/${sdcap()} (${Math.round(dexp / sdcap() * 100)}%)</font>`)
   }
 
   function sdcap() {
-    const softcap = 0.8901403358192
-    return Math.floor(dcap * softcap)
+    return Math.floor(dcap * 0.8901403358192)
   }
 
   mod.hook('S_LOAD_EP_INFO', 1, event => {
