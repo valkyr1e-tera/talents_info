@@ -6,7 +6,10 @@ module.exports = function talentsinfo(mod) {
   mod.command.add('ep', msg)
 
   function msg() {
-    mod.command.message(`LVL: <font color="#00FFFF">${level}</font>, Used EP: <font color="#00FFFF">${usedPoints}/${totalPoints}</font>, EXP: <font color="#00FFFF">${exp}</font>(NEXT: <font color="#00FFFF">${expTable[level+1] - Number(exp)}</font> EXP), DailyEXP: <font color="#00FFFF">${dailyExp}/${sdcap()} (${Math.round(dailyExp / sdcap() * 100)}%)</font>`)
+    const dailyExpRatio = dailyExp / sdcap()
+    const expCodicil = dailyExpRatio > 1 ? `${Math.round(dailyExpRatio * 100)}%` : `<font color="#FFF380">${sdcap() - dailyExp}</font> EXP left`
+
+    mod.command.message(`LVL: <font color="#00FFFF">${level}</font>, Used EP: <font color="#00FFFF">${usedPoints}/${totalPoints}</font>, EXP: <font color="#00FFFF">${exp}</font>(NEXT: <font color="#00FFFF">${expTable[level+1] - Number(exp)}</font> EXP), DailyEXP: <font color="#00FFFF">${dailyExp}/${sdcap()}(${expCodicil})</font>`)
   }
 
   function updateEP(event) {
